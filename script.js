@@ -175,3 +175,27 @@ if(soundBtn){
     });
 
 }
+// MOSTRAR CAMPO DE FRUTA QUANDO ESCOLHER FRUTAS
+
+const foodSelect = document.getElementById("food");
+const fruitInput = document.getElementById("fruit");
+
+
+if(foodSelect && fruitInput){
+
+    foodSelect.addEventListener("change", () => {
+
+        if(foodSelect.value === "Frutas"){
+
+            fruitInput.style.display = "block";
+
+        } else {
+
+            fruitInput.style.display = "none";
+            fruitInput.value = "";
+
+        }
+
+    });
+
+}
