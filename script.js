@@ -104,36 +104,48 @@ countdown();
 
 
 // CONFIRMAÇÃO WHATSAPP
+// CONFIRMAÇÃO WHATSAPP
 const confirmBtn = document.getElementById("confirm");
 
 if (confirmBtn) {
-
     confirmBtn.addEventListener("click", () => {
-
         const food = document.getElementById("food").value;
+        const fruitInput = document.getElementById("fruit").value; // Pega o que foi digitado
 
+        // Verifica se a pessoa não escolheu nada
         if (!food || food.includes("Escolha")) {
             alert("Escolha o que você vai levar.");
             return;
         }
 
+        // Cria a variável que vai guardar o item final
+        let itemLevado = food;
 
+        // Se a opção for "Frutas", ajusta o texto
+        if (food === "Frutas") {
+            // Se a pessoa esqueceu de digitar a fruta, avisa ela
+            if (!fruitInput.trim()) {
+                alert("Por favor, informe qual fruta você vai levar.");
+                return;
+            }
+            // Junta a palavra "Frutas" com o que a pessoa digitou
+            itemLevado = `Frutas (${fruitInput})`;
+        }
+
+        // Monta a mensagem final
         const mensagem = encodeURIComponent(
 `Olá! Confirmo minha presença no Luau de 28 anos.
 
-Vou levar: ${food}
+Vou levar: ${itemLevado}
 
 Nos vemos lá!`
         );
-
 
         window.open(
             "https://wa.me/5571987081472?text=" + mensagem,
             "_blank"
         );
-
     });
-
 }
 // ==========================
 // CONTROLE DO SOM DO MAR
