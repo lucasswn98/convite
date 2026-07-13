@@ -110,7 +110,7 @@ const confirmBtn = document.getElementById("confirm");
 if (confirmBtn) {
     confirmBtn.addEventListener("click", () => {
         const food = document.getElementById("food").value;
-        const fruitInput = document.getElementById("fruit").value; // Pega o que foi digitado
+        const fruitInput = document.getElementById("fruit").value;
 
         // Verifica se a pessoa não escolheu nada
         if (!food || food.includes("Escolha")) {
@@ -118,18 +118,17 @@ if (confirmBtn) {
             return;
         }
 
-        // Cria a variável que vai guardar o item final
+        // Variável que guarda o que vai na mensagem
         let itemLevado = food;
 
-        // Se a opção for "Frutas", ajusta o texto
+        // Se escolheu Frutas, troca o item final apenas pelo texto digitado
         if (food === "Frutas") {
-            // Se a pessoa esqueceu de digitar a fruta, avisa ela
             if (!fruitInput.trim()) {
                 alert("Por favor, informe qual fruta você vai levar.");
                 return;
             }
-            // Junta a palavra "Frutas" com o que a pessoa digitou
-            itemLevado = `Frutas (${fruitInput})`;
+            // Aqui é o segredo: Substitui a palavra "Frutas" pelo texto da fruta!
+            itemLevado = fruitInput; 
         }
 
         // Monta a mensagem final
@@ -141,6 +140,7 @@ Vou levar: ${itemLevado}
 Nos vemos lá!`
         );
 
+        // Envia para o WhatsApp
         window.open(
             "https://wa.me/5571987081472?text=" + mensagem,
             "_blank"
